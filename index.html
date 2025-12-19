@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip Of Hope – The Coffee House | A Place to Work, Create & Sip Happiness</title>
+    <meta name="description"
+        content="Premium coffee house in Ahmedabad offering specialty coffee, fresh food, gaming zone & creative spaces. Open till 1 AM.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy-dark: #152A43;
+            --navy: #1E3A5F;
+            --navy-light: #2D4A6F;
+            --cream: #F5F0E8;
+            --cream-light: #FBF9F6;
+            --charcoal: #1A1A1A;
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --warm-white: #FFFEF9;
+            --text-dark: #2C3E50;
+            --text-medium: #5D6D7E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream-light);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(30, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 5%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--cream);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(21, 42, 67, 0.7), rgba(30, 58, 95, 0.85)),
+                url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1920&q=80') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            color: var(--cream);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--charcoal);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 2px solid var(--cream);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cream);
+            color: var(--charcoal);
+            transform: translateY(-3px);
+        }
+
+        /* Steam Animation */
+        .steam-container {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .steam {
+            position: relative;
+            width: 80px;
+            height: 100px;
+        }
+
+        .steam span {
+            position: absolute;
+            bottom: 0;
+            width: 8px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: steam 3s ease-out infinite;
+        }
+
+        .steam span:nth-child(1) {
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .steam span:nth-child(2) {
+            left: 35px;
+            animation-delay: 0.5s;
+        }
+
+        .steam span:nth-child(3) {
+            left: 60px;
+            animation-delay: 1s;
+        }
+
+        @keyframes steam {
+            0% {
+                transform: translateY(0) scaleX(1);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-100px) scaleX(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--navy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title .gold-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--warm-white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--navy-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(201, 169, 98, 0.1);
+            border-radius: 10px;
+        }
+
+        .about-feature i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+        }
+
+        .menu .section-title h2,
+        .menu .section-title p {
+            color: var(--cream);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-card h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card p {
+            color: var(--cream);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: var(--cream-light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(30, 58, 95, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.12);
+        }
+
+        .why-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .why-card h3 {
+            color: var(--navy-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .why-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--navy-dark);
+            padding: 6rem 2%;
+        }
+
+        .gallery .section-title h2,
+        .gallery .section-title p {
+            color: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 50%, rgba(30, 58, 95, 0.9));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--cream);
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--warm-white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--cream-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(30, 58, 95, 0.06);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-card p {
+            color: var(--text-medium);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-author h4 {
+            color: var(--navy-dark);
+            font-size: 1rem;
+        }
+
+        .testimonial-author span {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        /* Visit Section */
+        .visit {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+        }
+
+        .visit .section-title h2,
+        .visit .section-title p {
+            color: var(--cream);
+        }
+
+        .visit-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .visit-info {
+            color: var(--cream);
+        }
+
+        .visit-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-top: 4px;
+        }
+
+        .contact-item a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold);
+        }
+
+        .visit-map {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .visit-map iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(201, 169, 98, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+            transform: translateY(-3px);
+        }
+
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--cream);
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            color: var(--cream);
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(30, 58, 95, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-content,
+            .visit-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 1;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Sip Of Hope</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#visit">Visit</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sip Of <span>Hope</span></h1>
+            <p class="tagline">"A Place to Work, Create & Sip Happiness"</p>
+            <div class="hero-buttons">
+                <a href="#visit" class="btn btn-primary">Reserve a Table</a>
+                <a href="https://sipofhope.dotpe.in" class="btn btn-secondary" target="_blank">Order Online</a>
+            </div>
+        </div>
+        <div class="steam-container">
+            <div class="steam">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title fade-in">
+            <h2>Our Story</h2>
+            <div class="gold-line"></div>
+            <p>Where every cup is crafted with love and every corner tells a story</p>
+        </div>
+        <div class="about-content">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="Café Interior">
+            </div>
+            <div class="about-text fade-in">
+                <h3>More Than Just Coffee</h3>
+                <p>Nestled in the heart of Ahmedabad, Sip Of Hope is where dreams meet caffeine. We created a space
+                    where freelancers find their flow, couples discover romance, and friends make memories that last
+                    forever.</p>
+                <p>Our café is designed to inspire – from cozy corners perfect for intimate conversations to
+                    collaborative spaces that spark creativity. Whether you're here for our artisan coffee, delectable
+                    food, or just the vibe, you'll always find your happy place.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-couch"></i>
+                        <span>Multiple Seating Areas</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-film"></i>
+                        <span>Creative & Movie Rooms</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-gamepad"></i>
+                        <span>PlayStation Zone</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-heart"></i>
+                        <span>Calm City Ambience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="section-title fade-in">
+            <h2>Menu Highlights</h2>
+            <div class="gold-line"></div>
+            <p>Handcrafted beverages & gourmet delights that keep you coming back</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80" alt="Cappuccino">
+                <div class="menu-card-content">
+                    <h3>Cappuccino</h3>
+                    <p>Classic Italian perfection with velvety foam</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="Cold Brew">
+                <div class="menu-card-content">
+                    <h3>Cold Brew Special</h3>
+                    <p>Smooth, bold flavors in unique varieties</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80"
+                    alt="Whiskey Cold Brew">
+                <div class="menu-card-content">
+                    <h3>Whiskey Barrel Aged Cold Brew</h3>
+                    <p>Our signature aged coffee experience</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&q=80" alt="Pesto Pasta">
+                <div class="menu-card-content">
+                    <h3>Pesto Pasta</h3>
+                    <p>Fresh basil pesto with artisan pasta</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=400&q=80" alt="Alfredo Pasta">
+                <div class="menu-card-content">
+                    <h3>Alfredo Pasta</h3>
+                    <p>Creamy, rich, and utterly satisfying</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80"
+                    alt="Blueberry Cheesecake">
+                <div class="menu-card-content">
+                    <h3>Blueberry Cheesecake</h3>
+                    <p>Heavenly layers of cream & berries</p>
+                </div>
+            </div>
+            <div class="menu-card fade-in">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80"
+                    alt="Nutella Cheesecake">
+                <div class="menu-card-content">
+                    <h3>Nutella Cheesecake</h3>
+                    <p>Chocolate hazelnut indulgence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="section-title fade-in">
+            <h2>Why Sip Of Hope?</h2>
+            <div class="gold-line"></div>
+            <p>What makes us the favorite spot in Ahmedabad</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="icon">☕</div>
+                <h3>Coffee Lover's Paradise</h3>
+                <p>Premium beans, expert baristas, and drinks crafted to perfection</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="icon">💻</div>
+                <h3>Freelancer Friendly</h3>
+                <p>High-speed WiFi, power outlets, and spaces designed for productivity</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="icon">🎮</div>
+                <h3>Gaming & Movie Room</h3>
+                <p>PlayStation zone and private movie screen for ultimate entertainment</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="icon">🍰</div>
+                <h3>Fresh Food & Desserts</h3>
+                <p>From savory pastas to decadent cheesecakes, all made fresh</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="icon">🌙</div>
+                <h3>Open Till 1 AM</h3>
+                <p>Late night coffee runs? We've got you covered</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="icon">⭐</div>
+                <h3>4.5 Rating (955+ Reviews)</h3>
+                <p>Loved by hundreds for our ambience, coffee & hospitality</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-title fade-in">
+            <h2>Our Space</h2>
+            <div class="gold-line"></div>
+            <p>Glimpses of the experience that awaits you</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80" alt="Café Ambience">
+                <div class="gallery-overlay"><span>Cozy Ambience</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Coffee Art">
+                <div class="gallery-overlay"><span>Artisan Coffee</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=400&q=80" alt="Food">
+                <div class="gallery-overlay"><span>Gourmet Food</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&q=80" alt="Seating">
+                <div class="gallery-overlay"><span>Comfortable Seating</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=400&q=80" alt="Coffee Beans">
+                <div class="gallery-overlay"><span>Premium Beans</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Latte Art">
+                <div class="gallery-overlay"><span>Latte Art</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title fade-in">
+            <h2>Customer Love</h2>
+            <div class="gold-line"></div>
+            <p>What our guests are saying about us</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-in">
+                <p>The ambience is absolutely magical! I come here every weekend with my laptop and the hours just fly
+                    by. The cold brew is addictive!</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Priya">
+                    <div>
+                        <h4>Priya Sharma</h4>
+                        <span>Freelance Designer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <p>Perfect date spot! The cozy corners, dim lighting, and amazing desserts make it our favorite place.
+                    The Nutella cheesecake is to die for!</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rahul">
+                    <div>
+                        <h4>Rahul Mehta</h4>
+                        <span>Regular Visitor</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <p>The gaming room is such a unique addition! Where else can you enjoy great coffee and play PS5 with
+                    friends? Love this place!</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Arjun">
+                    <div>
+                        <h4>Arjun Patel</h4>
+                        <span>Coffee Enthusiast</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Section -->
+    <section class="visit" id="visit">
+        <div class="section-title fade-in">
+            <h2>Visit Us</h2>
+            <div class="gold-line"></div>
+            <p>We're waiting to serve you the perfect cup</p>
+        </div>
+        <div class="visit-content">
+            <div class="visit-info fade-in">
+                <h3>Find Your Happy Place</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p>Super Plaza Complex, Judges Bungalow Rd,<br>Bodakdev, Ahmedabad, Gujarat</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+917600085833">076000 85833</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://sipofhopecoffee.com" target="_blank">sipofhopecoffee.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-shopping-bag"></i>
+                    <a href="https://sipofhope.dotpe.in" target="_blank">Order Online: sipofhope.dotpe.in</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Open Daily: 9:00 AM – 1:00 AM</p>
+                </div>
+            </div>
+            <div class="visit-map fade-in">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.7389999!2d72.5088!3d23.0388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4b9a1a2a2b%3A0x1a2b3c4d5e6f7g8h!2sSip%20Of%20Hope%20-%20The%20Coffee%20House!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Sip Of Hope</div>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="footer-quote">"Every sip tells a story."</p>
+        <div class="footer-bottom">
+            <p>© 2024 Sip Of Hope – The Coffee House. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
